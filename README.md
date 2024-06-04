@@ -1,2 +1,2 @@
 # EserciziPython
-Esercizi Corso Python Its-ICT Academy
+Esercizi Corso Python ITS-ICTAcademy
