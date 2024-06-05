@@ -63,8 +63,10 @@ b: dict[str, Any] = {
     "key_3" : 3,
     "key_4" : [1, 2]
 }
-'''
 
+'''
 i: int = 0
 
 assert i == 0, f"the value must be equal to 0 insted of is {i}"
+
+
