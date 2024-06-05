@@ -87,6 +87,3 @@ Restaurant2 = Restaurant('tonys pizza', 'exclusively pizza')
 Restaurant2.describe_restaurant()
 Restaurant3 = Restaurant('taihstant', 'taihlandees')
 Restaurant3.describe_restaurant()
-
-
-forza roma
