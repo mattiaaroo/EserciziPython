@@ -1,23 +1,23 @@
 class Animal:
 	def __init__(self, name, species, age, height, width, preferred_habitat):
-		self.name = name
-		self.species = species
-		self.age = age
+		self.name: str = name
+		self.species: str = species
+		self.age: float = age
 		self.height: float = height
 		self.width: float = width
-		self.preferred_habitat = preferred_habitat
+		self.preferred_habitat: str = preferred_habitat
 		self.health = round(100 * (1 / self.age), 3)
 		self.area: float = height * width
-		self.fence = None
+		self.fence: Fence = None
     
 	def __str__(self):
 		return f"(name={self.name} species={self.species} age={self.age})"
 	
 class Fence:
 	def __init__(self, area, temperature, habitat):
-		self.area = area
-		self.temperature = temperature
-		self.habitat = habitat
+		self.area: float = area
+		self.temperature: float = temperature
+		self.habitat: str = habitat
 		self.available_space = area
 		self.animals: list = []
 		zoo.fences.append(self)
@@ -56,23 +56,11 @@ class ZooKeeper:
 		if fence.animals:
 			if fence.available_space == 0:
 				cleaning_time = occupied_space
-				for animal in fence.animals:
-					fence.animals.remove(animal)
-			else: 
-				for animal in fence.animals:
-					fence.animals.remove(animal)
+			else:
 				cleaning_time = occupied_space / fence.available_space
 		else:
 			cleaning_time = 0
 		return cleaning_time
-
-	def __str__(self):
-		return f"(name={self.name} surname={self.surname} id={self.id})"
-	
-class Zoo:
-	def __init__(self):
-		self.fences: list = []
-		self.zoo_keepers: list = []
 	
 	def add_animal(self, animal: Animal, fence: Fence):
 		if fence.habitat == animal.preferred_habitat:
@@ -94,6 +82,15 @@ class Zoo:
 		else:
 			fence.animals.remove(animal)
 			animal.fence = None
+			fence.available_space += animal.area
+
+	def __str__(self):
+		return f"(name={self.name} surname={self.surname} id={self.id})"
+	
+class Zoo:
+	def __init__(self):
+		self.fences: list = []
+		self.zoo_keepers: list = []
 		
 	def describe_zoo(self):
 			print("\nGuardians:")
@@ -125,18 +122,18 @@ animal3 = Animal(name = "Collorius", species = "Giraffis", age = 56, height = 5,
 
 zookeeper = ZooKeeper("Lorenzo", "Maggi", 1234)
 
-zoo.add_animal(animal1, forest)
-zoo.add_animal(animal2, forest)
+zookeeper.add_animal(animal1, forest)
+zookeeper.add_animal(animal2, forest)
 
 '''zoo.describe_zoo()
 print(forest.animals)'''
 
-zoo.remove_animal(animal2, forest)
+zookeeper.remove_animal(animal2, forest)
 
 '''zoo.describe_zoo()
 print(forest.animals)'''
 
-zoo.add_animal(animal3, savana)
+zookeeper.add_animal(animal3, savana)
 print(animal3.area)
 zookeeper.feed(animal3)
 print(animal3.area)
@@ -146,7 +143,7 @@ zoo.describe_zoo()
 zookeeper.clean(savana)
 zoo.describe_zoo()
 
-zoo.remove_animal(animal1, forest)
+zookeeper.remove_animal(animal1, forest)
 zoo.describe_zoo()
 
 
