@@ -17,7 +17,7 @@ class Media:
         return summ/len(self.reviews)
     
     def getRate(self):
-        val_media: float = round(self.getMedia(self), 0)
+        val_media: float = round(self.getMedia(), 0)
         if val_media == 1:
             return "Terribile"
         if val_media == 2:
@@ -31,20 +31,36 @@ class Media:
         
     def ratePercentage(self, voto):
         votoF: int = self.reviews.count(voto)
-        percentage: float = len(self.reviews)/votoF * 100
+        if votoF == 0:
+            return f'voto: {voto} non presente'
+        else:
+            percentage: float = len(self.reviews)/votoF * 100
         return percentage
     
     def recensione(self):
-        return f"Titolo del Film: {self.title} \nVoto Medio: {self.getMedia()} \nGiudizio: {self.reviews[self.getMedia()]} \nTerribile: {self.ratePercentage(self, 1)} \nBrutto: {self.ratePercentage(self, 2)} \nNormale: {self.ratePercentage(self, 3)} \nBello: {self.ratePercentage(self, 4)} \nGrandioso: {self.ratePercentage(self, 5)}"
+        return (
+            f"Titolo del Film: {self.title}\n"
+            f"Voto Medio: {self.getMedia():.2f}\n"
+            f"Giudizio: {self.getRate()}\n"
+            f"Terribile: {self.ratePercentage(1):.2f}%\n"
+            f"Brutto: {self.ratePercentage(2):.2f}%\n"
+            f"Normale: {self.ratePercentage(3):.2f}%\n"
+            f"Bello: {self.ratePercentage(4):.2f}%\n"
+            f"Grandioso: {self.ratePercentage(5):.2f}%"
+        )
     
 
-# Creazione dei due oggetti Media
-film1 = Media("Film1", [])
-film2 = Media("Film2", [])
+class Film(Media):
+    def __init__(self, title, reviews):
+        super().__init__(title, reviews)
 
-# Aggiunta di almeno 10 valutazioni a ciascun film
-valutazioni_film1 = [4, 5, 3, 4, 4, 5, 3, 4, 5, 4]
-valutazioni_film2 = [2, 3, 2, 1, 2, 3, 1, 1, 2, 2]
+
+film1 = Film("Film 1", [])
+film2 = Film("Film 2", [])
+
+# Aggiunta di almeno dieci valutazioni per ciascun film
+valutazioni_film1 = [5, 4, 3, 4, 5, 2, 3, 4, 5, 1]
+valutazioni_film2 = [2, 3, 4, 2, 2, 3, 4, 3, 2, 1]
 
 for voto in valutazioni_film1:
     film1.aggiungiValutazione(voto)
@@ -53,8 +69,5 @@ for voto in valutazioni_film2:
     film2.aggiungiValutazione(voto)
 
 # Richiamo del metodo recensione per ciascun film
-print("Recensione Film 1:")
-film1.recensione()
-
-print("\nRecensione Film 2:")
-film2.recensione()
+print(film1.recensione())
+print(film2.recensione())
