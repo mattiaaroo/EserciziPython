@@ -17,7 +17,7 @@ def twoSum(nums, target):
                 pass
         i += 1
     return couple
- '''   
+
 def findMedianSortedArrays(nums1, nums2):
         """
         :type nums1: List[int]
@@ -36,3 +36,49 @@ def findMedianSortedArrays(nums1, nums2):
 nums1 = [1,2]
 nums2 = [3,4]
 print(findMedianSortedArrays(nums1, nums2))
+'''
+l1: list = [3,4,2]
+l2: list = [4,6,5]
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+        
+    def addTwoNumbers(self, l1, l2):
+        num1 = 0
+        num2 = 0
+        place = 1
+
+        current = l1
+        while current:
+            num1 += current.val * place
+            place *= 10
+            current = current.next
+
+        place = 1
+
+        current = l2
+        while current:
+            num2 += current.val * place
+            place *= 10
+            current = current.next
+
+        total = num1 + num2
+
+        dummy_head = ListNode(0)
+        current = dummy_head
+
+        if total == 0:
+            return ListNode(0)
+
+        while total:
+            digit = total % 10
+            total //= 10
+            current.next = ListNode(digit)
+            current = current.next
+
+        return dummy_head.next
+
+
+print(addTwoNumbers(l1, l2))
