@@ -36,7 +36,8 @@ def findMedianSortedArrays(nums1, nums2):
 nums1 = [1,2]
 nums2 = [3,4]
 print(findMedianSortedArrays(nums1, nums2))
-'''
+
+
 l1: list = [3,4,2]
 l2: list = [4,6,5]
 
@@ -82,3 +83,57 @@ class ListNode:
 
 
 print(addTwoNumbers(l1, l2))
+
+
+def findMedianSortedArrays(nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        nums = nums1 + nums2
+        nums.sort()
+        if len(nums) % 2 == 0:
+            res1 = nums[int(len(nums) / 2)]
+            res2 = nums[int(len(nums) / 2 - 1)]
+            return (res1+res2)/2
+            
+        else:
+            
+            return nums[int(len(nums)/2)]
+        
+
+nums1: list = [1,2]
+nums2: list = [3,4]
+
+print(findMedianSortedArrays(nums1, nums2))
+'''
+
+def myAtoi(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    result = 0
+    num_count = []
+    for c in s:
+        numbers = ["1","2","3","4","5","6","7","8","9","0"]
+        if c in numbers:
+            c = int(c)
+            result += c
+            num_count.append(c)
+            pass
+
+        else: 
+            break
+        
+    som = 0
+    num_count = reversed(num_count)
+    for n in num_count:
+        i = num_count.index(n)
+        som += (n*(i*10))
+
+    return som
+
+
+print(myAtoi("42"))
