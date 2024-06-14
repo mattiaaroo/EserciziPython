@@ -12,7 +12,7 @@ class TestPersona(unittest.TestCase):
     def test_init(self):
         self.assertEqual(self.persona.getName(), 'Mario')
         self.assertEqual(self.persona.getLastName(), 'Rossi')
-        self.assertEqual(self.persona._Persona__age, 0)
+        self.assertEqual(self.persona.getAge(), 0)
 
     def test_setname(self):
         self.persona.setname('Luigi')
@@ -30,10 +30,10 @@ class TestPersona(unittest.TestCase):
 
     def test_setAge(self):
         self.persona.setAge(25)
-        self.assertEqual(self.persona._Persona__age, 25)
+        self.assertEqual(self.persona.getAge(), 25)
         result = self.persona.setAge('venticinque')
         self.assertEqual(result, "L'età deve essere un numero intero!")
-        self.assertEqual(self.persona._Persona__age, 25)
+        self.assertEqual(self.persona.getAge(), 25)
 
 class TestDottore(unittest.TestCase):
 
