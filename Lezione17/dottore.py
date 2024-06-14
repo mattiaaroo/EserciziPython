@@ -17,12 +17,13 @@
     doctorGreet():tale metodo richiama la funzione greet() della classe Persona. Poi, stampa il seguente saluto "Sono un medico {specializzazione}"
 
 '''
-import persona
+from persona import Persona
 
-class Dottore(persona):
-    def __init__(self, specialization, parcel):
-        super().__init__(self.__first_name, self.__last_name)
-
+class Dottore(Persona):
+    def __init__(self, first_name, last_name, specialization, parcel):
+        super().__init__(first_name, last_name)
+        self.__specialization = specialization
+        self.__parcel = parcel
 
         if type(specialization) is str:
             self.__specialization: str = specialization
@@ -52,11 +53,15 @@ class Dottore(persona):
         return self.__parcel
     
     def isAValidDoctor(self):
-        if self.__age >= 30:
+        if self.getAge() >= 30:
             return "Doctor nome e cognome is valid!"
         else:
             return "Doctor nome e cognome is not valid!"
         
     def doctorGreet(self):
-        self.greet(self)
-        print(f"Sono un medico {self.specializzazione}")
+        self.greet()
+        print(f"Sono un medico {self.__specialization}")
+
+
+dottore1 = Dottore("mattia", "ro", "fegatite", 104.4)
+dottore1.doctorGreet()

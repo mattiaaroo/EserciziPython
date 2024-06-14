@@ -62,11 +62,16 @@ class Persona:
     def getLastName(self):
         return self.__last_name
     
+    def getAge(self):
+        return self.__age
+    
     def greet(self): 
         print(f"Ciao, sono {self.__first_name} {self.__last_name}! Ho {self.__age} anni!")
 
 
 mattia = Persona("mattia", "ro")
 print(mattia.greet())
+mattia.setAge(22)
+mattia.getAge()
 
 
