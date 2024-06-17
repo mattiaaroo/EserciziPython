@@ -29,30 +29,41 @@ Questa classe deve avere come attributi una lista di film contenuti in negozio (
 '''
 
 from film import Film
+
 class Noleggio:
-    def __init__(self, film_list: list[Film], rented_film: dict):
+    def __init__(self, film_list: list[Film], rented_film: dict = None):
         self.film_list: list[Film] = film_list
-        self.rented_film: dict[str:list] = rented_film
-        self.film_list = []
-        self.rented_film = {}
+        self.rented_film = rented_film if rented_film is not None else {}
 
-    def isAvailable(self, film):
+    def isAvailable(self, film: Film):
         if film in self.film_list:
-            print(f"Il film scelto è disponibile: {film.getTitle}!")
-        else:
-            print(f"Il film scelto non è disponibile: {film.getTitle}!")
+            return True
+        return False
 
-    def rentAMovie(self, film, clientID):
+    def rentAMovie(self, film: Film, clientID):
         if film in self.film_list:
             self.film_list.remove(film)
-            self.rented_list[clientID].film
-            print(f"Il cliente {clientID} ha noleggiato {film.getTitle}!")
-        else:
-            print("Non è possibile nolegiare il film {film.getTitle}!")
+            if clientID not in self.rented_film:
+                self.rented_film[clientID] = []
+            self.rented_film[clientID].append(film)
+            return True
+        return False
 
-    def giveBack(self, film, clientID, days):
-        if film in self.rented_film[clientID]:
+    def giveBack(self, film: Film, clientID, days):
+        if clientID in self.rented_film and film in self.rented_film[clientID]:
             self.rented_film[clientID].remove(film)
             self.film_list.append(film)
-            tot = days * 
-            print("Cliente: {clientID}! La penale da pagare per il film {titolo_film} e' di {tot} euro!")
+            tot = days * film.getPenale()
+            return tot
+        return None
+
+    def printMovies(self):
+        for film in self.film_list:
+            print(f"{film.getTitle()} - {film.getGenere()} -")
+        
+    def printRentMovies(self, clientID):
+        if clientID in self.rented_film:
+            for film in self.rented_film[clientID]:
+                print(f"{film.getTitle()} - {film.getGenere()} -")
+        else:
+            print(f"Cliente {clientID} non ha noleggiato nessun film.")

@@ -9,9 +9,9 @@
 '''
 
 class Film:
-    def __init__(self, id, film):
+    def __init__(self, id, title):
         self.id = id
-        self.film = film
+        self.title = title
 
     def setID(self, id):
         self.id = id
@@ -22,7 +22,7 @@ class Film:
     def getID(self):
         return self.id
     
-    def getTtile(self):
+    def getTitle(self):
         return self.title
     
     def isEqual(self, otherFilm):

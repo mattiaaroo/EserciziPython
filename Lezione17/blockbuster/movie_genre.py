@@ -11,24 +11,12 @@ Ognuna di queste classi ha un attributo privato di tipo string chiamato genere, 
 
 Le tre classi Azione, Commedia e Drama devono essere contenute nel file "movie_genre.py".'''
 from film import Film
+from noleggio import Noleggio
 
 class Azione(Film):
-    def __init__(self, Azione, penale):
-        self.__genere: str = Azione
-        self.__penale: float = penale
-        self.__penale = 3
-        
-class Commedia(Film):
-    def __init__(self, Commedia, penale):
-        self.__genere: str = Commedia
-        self.__penale: float = penale
-        self.__penale = 2.5
-
-
-class Drama(Film):
-    def __init__(self, Drama, penale):
-        self.__genere: str = Drama
-        self.__penale: float = penale
+    def __init__(self, id, title):
+        super().__init__(id, title)
+        self.__genere = "Azione"
         self.__penale = 3
 
     def getGenere(self):
@@ -36,8 +24,28 @@ class Drama(Film):
     
     def getPenale(self):
         return self.__penale
+        
+class Commedia(Film):
+    def __init__(self, id, title):
+        super().__init__(id, title)
+        self.__genere = "Commedia"
+        self.__penale = 2.5
+
+    def getGenere(self):
+        return self.__genere
     
-    def calcolaPenaleRitardo(self):
-        return self.__penale * days
+    def getPenale(self):
+        return self.__penale
+
+
+class Drama(Film):
+    def __init__(self, id, title):
+        super().__init__(id, title)
+        self.__genere = "Drama"
+        self.__penale = 3
+
+    def getGenere(self):
+        return self.__genere
     
-    
+    def getPenale(self):
+        return self.__penale
