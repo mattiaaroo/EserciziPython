@@ -107,7 +107,7 @@ nums1: list = [1,2]
 nums2: list = [3,4]
 
 print(findMedianSortedArrays(nums1, nums2))
-'''
+
 
 def myAtoi(s):
     """
@@ -137,3 +137,100 @@ def myAtoi(s):
 
 
 print(myAtoi("42"))
+
+
+
+
+def intToRoman(num):
+    
+    ops: dict = {"M": 1000, "D": 500, "C": 100, "L": 50, "X": 10, "V": 5, "I" : 1}
+    res: str = ""
+    while num != 0:
+        check = 0
+        for op in ops:
+            if op * (num // ops[op]) != 0:
+                if num != 4:
+                    check += 1
+                else:
+                    res += "IV"
+                if num != 9:
+                    check += 1
+                else:
+                    res += "IX"
+                if num != 90:
+                    check += 1
+                else:
+                    res += "XC"
+                if num != 400:
+                    check += 1
+                else:
+                    res += "CD"
+                if num != 40:
+                    check += 1
+                else:
+                    res += "XL"
+                if num != 900:
+                    check += 1
+                else:
+                    res += "CM"
+                    
+                if check != 0:
+                    res += (op * (num // ops[op]))
+
+                num -= (ops[op] * (num // ops[op]))
+            else: 
+                check = 0
+                pass
+        counter = 0
+        for n in res:
+            for _ in res[n:]:
+
+                if _ == n:
+                    counter += 1
+                else:
+                    counter = 0
+                    continue
+        
+            
+    return res
+
+print(intToRoman(3749))
+
+
+def intToRoman(num):
+    ops: dict = {1000:"M", 500: "D", 100: "C", 50: "L", 10: "X", 5: "V", 1: "I"}
+    exs: dict = {4:"IV", 9:"IX", 40:"XL", 90:"XC", 400:"CD", 900:"CM"}
+    res: list = []
+    while num > 0:
+        for op in ops:
+            if num // op:
+                num -= (num // op) * op 
+                res.append((num // op) * ops[op])
+            else:
+                continue
+        for ex in exs:
+            if num == ex:
+                num -= ex
+                res.append((num // ex) * exs[ex])
+            else: 
+                continue
+    return res
+
+print(intToRoman(3749))
+
+
+
+def intToRoman(num):
+    M = ["","M", "MM", "MMM"]
+    C = ["","C","CC", "CCC", "CD", "D", "DC", "DCC", "CCM", "CM"]
+    X = ["","X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"]
+    I = ["","I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"]
+    res = ""
+    res = M[num//1000] + C[(num % 1000)//100] + X[num % 100 // 10] + I[num % 10 // 1]
+    return res
+
+
+print(intToRoman(80))
+
+'''
+
