@@ -232,5 +232,32 @@ def intToRoman(num):
 
 print(intToRoman(80))
 
+
+
+def reverse(x: int) -> int:
+    reversed_x = str(x)[::-1]
+    reversed_x = int(x)
+    if reversed_x < -2**31 or reversed_x > 2**31 - 1:
+        return 0
+    else:
+        reversed_x = str(reversed_x)
+        reversed_x = list(reversed_x)
+        if reversed_x[-1] == "-":
+            reversed_x.pop()
+        while reversed_x[-1] == "0":
+            reversed_x.pop()
+        if "-" in reversed_x:
+            reversed_x.remove("-")
+        res = ''.join(reversed_x[::-1])
+        if x < 0:
+            return int(res) * -1
+        else:
+            return int(res)
+
+
+    
+        
+
+print(reverse(-901000))
 '''
 
