@@ -258,5 +258,57 @@ def reverse(x: int) -> int:
     
         
 
-print(reverse(-901000))
+print(reverse(-901000)
+
+'''
+
+# def fourSum(nums: list[int], target: int) -> list[list[int]]:
+#     res: list[list[int]] = []
+#     l: list[int] = []
+#     res.append(l)
+#     while len(l) < 4:
+#         for i in range(len(nums)):
+#             for j in range(len(nums[i+1:])):
+#                 if target - nums[i] == nums[j]:
+#                     l.append(nums[i])
+#                     l.append(nums[j])
+#                     pass
+#                 else:
+#                     pass
+#     else:
+#         fourSum(nums, target)
+
+#     return res
+    
+#     a = target - n
+#     if a in nums:
+#         res.append(n)
+#         res.append(a)
+#         nums.remove(n)
+#         nums.remove(a)
+
+# print(fourSum(nums = [1,0,-1,0,-2,2], target = 0))
+
+
+'''
+
+
+
+
+def longestCommonPrefix(v: list[str]) -> str:
+    ans=""
+    v=sorted(v)
+    first=v[0]
+    last=v[-1]
+    for i in range(min(len(first),len(last))):
+        if(first[i]!=last[i]):
+            return ans
+        ans+=first[i]
+    return ans 
+
+
+
+
+print(longestCommonPrefix(["flower", "flow", "flight"]))
+
 '''
