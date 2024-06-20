@@ -24,6 +24,11 @@ class Azione(Film):
     
     def getPenale(self):
         return self.__penale
+    
+    def calcolaPenaleRitardo(self, film, days):
+        penale = film.getPenale()
+        totale_penale = days * penale
+        return totale_penale
         
 class Commedia(Film):
     def __init__(self, id, title):
@@ -36,6 +41,11 @@ class Commedia(Film):
     
     def getPenale(self):
         return self.__penale
+    
+    def calcolaPenaleRitardo(self, film, days):
+        penale = film.getPenale()
+        totale_penale = days * penale
+        return totale_penale
 
 
 class Drama(Film):
@@ -50,4 +60,7 @@ class Drama(Film):
     def getPenale(self):
         return self.__penale
     
-    
+    def calcolaPenaleRitardo(self, film, days):
+        penale = film.getPenale()
+        totale_penale = days * penale
+        return totale_penale
