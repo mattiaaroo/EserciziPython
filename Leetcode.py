@@ -312,3 +312,33 @@ def longestCommonPrefix(v: list[str]) -> str:
 print(longestCommonPrefix(["flower", "flow", "flight"]))
 
 '''
+
+
+def lengthOfLongestSubstring(s: str) -> int:
+    counter: int = 0
+    subs: dict [int : list] = {}
+    if s:
+        for c in s:
+            if counter not in subs.keys():
+                    subs[counter] = []
+            if c not in subs[counter]:
+                subs[counter].append(c)
+            else:
+                if counter != 0:
+                    if subs[counter-1][-1] == c:
+                        subs[counter].pop(0)
+                        subs[counter].append(c)
+                        pass
+                else:
+                    counter += 1
+                    subs[counter] = []
+                    subs[counter].append(subs[counter-1][-1])
+                    subs[counter].append(c)
+                
+                pass
+    else: 
+        return 0
+    return max(len(set(list)) for list in subs.values())
+
+
+print(lengthOfLongestSubstring("anviaj"))
