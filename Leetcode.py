@@ -311,7 +311,6 @@ def longestCommonPrefix(v: list[str]) -> str:
 
 print(longestCommonPrefix(["flower", "flow", "flight"]))
 
-'''
 
 
 def lengthOfLongestSubstring(s: str) -> int:
@@ -342,3 +341,17 @@ def lengthOfLongestSubstring(s: str) -> int:
 
 
 print(lengthOfLongestSubstring("anviaj"))
+
+
+'''
+
+
+def removeDuplicates(nums: list[int]) -> int:
+        nums1: list[int] = []
+        for i in range(len(nums)):
+            if nums[i] not in nums1:
+                  nums1.append(nums[i])
+            
+        return nums1
+
+print(removeDuplicates([1, 2, 3, 3]))
