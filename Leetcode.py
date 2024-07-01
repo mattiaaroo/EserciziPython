@@ -343,7 +343,7 @@ def lengthOfLongestSubstring(s: str) -> int:
 print(lengthOfLongestSubstring("anviaj"))
 
 
-'''
+
 
 
 def removeDuplicates(nums: list[int]) -> int:
@@ -355,3 +355,91 @@ def removeDuplicates(nums: list[int]) -> int:
         return nums1
 
 print(removeDuplicates([1, 2, 3, 3]))
+
+
+
+def threeConsecutiveOdds(arr: list[int]) -> bool:
+        streak: int = 0
+        res: bool = False
+        i : int = 0
+        while i in range(len(arr)) and streak < 3:
+            if arr[i] % 2 > 0:
+                streak += 1
+                i += 1
+            else:
+                streak = 0
+                i += 1
+        return streak == 3
+
+lista: list[int] = [2,6,4,1, 7, 9]
+print(threeConsecutiveOdds(lista))
+
+
+''''
+
+
+
+# def maxNumEdgesToRemove(n: int, edges: list[list[int]]) -> int:
+#         touchedNodes: list = []
+#         checkEdgesA : list[int] = []
+#         checkEdgesB : list[int] = []
+
+#         i: int = 0
+#         for l in edges:
+#             i: int = 0
+#             # list of all touched nodes
+#             while i <= 4:
+#                 if i == 1:
+#                     touchedNodes.append(l[i])
+#                     i += 1
+#                 elif i == 2:
+#                     touchedNodes.append(l[i])
+#                     i += 1
+#                 else:
+#                     i += 1
+#                     continue
+
+
+#         #dictionary of all nodes {A: [touchedNodesByA], B:[touchedNodesByB]}
+#         for l in edges:
+#             if l[0] == 1:
+#                 checkEdgesA.append(l[1])
+#                 checkEdgesA.append(l[2])
+#             elif l[0] == 2:
+#                 checkEdgesB.append(l[1])
+#                 checkEdgesB.append(l[2])
+#             elif l[0] == 3:
+#                 checkEdgesA.append(l[1])
+#                 checkEdgesA.append(l[2])
+#                 checkEdgesB.append(l[1])
+#                 checkEdgesB.append(l[2])
+
+        
+
+
+#         #check if all nodes are touched by all both a and b
+#         for node in touchedNodes:
+#             if node in checkEdgesA and node in checkEdgesB :
+#                 continue
+#             else:
+#                 return -1
+
+#         res: int = 0
+
+#         for node in touchedNodes:
+#             for node in checkEdgesA:
+#                 counter: int = 0
+#                 counter: int = checkEdgesA.count(node)
+#                 if counter > 1:
+#                     res += counter - 1
+#             for node in checkEdgesB:
+#                 counter: int = checkEdgesB.count(node)
+#                 if counter > 1:
+#                     res += counter - 1
+#         return res
+
+
+
+# lista: list[int] = [[3,1,2],[3,2,3],[1,1,3],[1,2,4],[1,1,2],[2,3,4]]
+# print(maxNumEdgesToRemove(4, lista))
+
